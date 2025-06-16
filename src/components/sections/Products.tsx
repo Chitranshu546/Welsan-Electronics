@@ -31,13 +31,23 @@ const productData = [
       },
       {
         id: 'model-2',
-        name: 'Premium Model',
-        image: '/E-rickshaw 48v.jpg', // Will be updated when you provide the image
-        specs: '48V/20A',
-        price: '₹3,450',
-        marketPrice: '₹3,900',
-        description: 'Premium 48V lead-acid charger with enhanced charging speed and advanced protection.',
-        features: ['Ultra Fast Charging', 'Advanced Protection', 'Premium Build']
+        name: 'Premium Model 1',
+        image: '/e-rickshaw 48v model 2 copy.jpg',
+        specs: '48V/18A',
+        price: '₹3,250',
+        marketPrice: '₹3,700',
+        description: 'Premium 48V lead-acid charger with enhanced features and advanced protection.',
+        features: ['Fast Charging', 'Advanced Protection', 'Premium Build']
+      },
+      {
+        id: 'model-3',
+        name: 'Premium Model 2',
+        image: '/e-rick 48v model3 copy.jpg',
+        specs: '48V/18A',
+        price: '₹3,250',
+        marketPrice: '₹3,700',
+        description: 'Premium 48V lead-acid charger with superior build quality and enhanced safety.',
+        features: ['Fast Charging', 'Superior Safety', 'Premium Design']
       }
     ]
   },
@@ -65,7 +75,7 @@ const productData = [
     marketPrice: '₹4,500',
     rating: 4.9,
     features: ['Smart Technology', 'Premium Quality', 'Advanced Safety'],
-    image: '/e-ric 48v lithium.jpg',
+    image: '/ev 48 rick lithium copy.jpg',
     gradient: 'from-purple-500 to-pink-500',
     badgeGradient: 'from-purple-600 to-pink-600'
   },
@@ -82,6 +92,20 @@ const productData = [
     image: 'https://images.pexels.com/photos/3825567/pexels-photo-3825567.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2',
     gradient: 'from-orange-500 to-red-500',
     badgeGradient: 'from-orange-600 to-red-600'
+  },
+  {
+    id: 'scooter-lithium',
+    name: '48V/60V Lithium Charger',
+    category: 'E-Scooter',
+    type: 'Lithium',
+    specs: '48V-60V/6A',
+    price: '₹2,150',
+    marketPrice: '₹2,750',
+    rating: 4.8,
+    features: ['Dual Voltage', 'Smart Charging', 'Universal Compatibility'],
+    image: '/scooty 48v lithium.jpg',
+    gradient: 'from-indigo-500 to-purple-500',
+    badgeGradient: 'from-indigo-600 to-purple-600'
   },
   // LED TVs
   {

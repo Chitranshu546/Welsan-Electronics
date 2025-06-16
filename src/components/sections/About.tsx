@@ -18,6 +18,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) =
 const About: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,12 +41,19 @@ const About: React.FC = () => {
       observer.observe(featuresRef.current);
     }
 
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
       if (featuresRef.current) {
         observer.unobserve(featuresRef.current);
+      }
+      if (imageRef.current) {
+        observer.unobserve(imageRef.current);
       }
     };
   }, []);
@@ -68,27 +76,42 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        <div ref={featuresRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 opacity-0 transition-all duration-700 delay-300">
-          <FeatureCard
-            icon={<Zap size={40} />}
-            title="Quality Products"
-            description="We manufacture high-quality EV chargers and smart LED TVs with durability and performance as our priority."
-          />
-          <FeatureCard
-            icon={<Cpu size={40} />}
-            title="Innovation"
-            description="Our products incorporate the latest technology to ensure efficiency and user satisfaction."
-          />
-          <FeatureCard
-            icon={<Tv size={40} />}
-            title="Wide Range"
-            description="We offer a diverse range of products to meet various customer needs and preferences."
-          />
-          <FeatureCard
-            icon={<Shield size={40} />}
-            title="Warranty Backed"
-            description="All our products come with a 1-year warranty, ensuring peace of mind for our customers."
-          />
+        {/* About Content with Promotional Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          {/* Features Grid */}
+          <div ref={featuresRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 opacity-0 transition-all duration-700 delay-300">
+            <FeatureCard
+              icon={<Zap size={40} />}
+              title="Quality Products"
+              description="We manufacture high-quality EV chargers and smart LED TVs with durability and performance as our priority."
+            />
+            <FeatureCard
+              icon={<Cpu size={40} />}
+              title="Innovation"
+              description="Our products incorporate the latest technology to ensure efficiency and user satisfaction."
+            />
+            <FeatureCard
+              icon={<Tv size={40} />}
+              title="Wide Range"
+              description="We offer a diverse range of products to meet various customer needs and preferences."
+            />
+            <FeatureCard
+              icon={<Shield size={40} />}
+              title="Warranty Backed"
+              description="All our products come with a 1-year warranty, ensuring peace of mind for our customers."
+            />
+          </div>
+
+          {/* Promotional Image */}
+          <div ref={imageRef} className="opacity-0 transition-all duration-700 delay-500">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+              <img
+                src="/home page poster copy.jpg"
+                alt="Welsan Electronics - Good Quality Best Price"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

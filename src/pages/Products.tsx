@@ -59,13 +59,23 @@ const products: Product[] = [
       },
       {
         id: 'model-2',
-        name: 'Premium Model',
-        image: '/E-rickshaw 48v.jpg',
-        specs: '48V/20A',
-        price: '₹3,450',
-        marketPrice: '₹3,900',
-        description: 'Premium 48V lead-acid charger with enhanced charging speed and advanced protection.',
-        features: ['Ultra Fast Charging', 'Advanced Protection', 'Premium Build']
+        name: 'Premium Model 1',
+        image: '/e-rickshaw 48v model 2 copy.jpg',
+        specs: '48V/18A',
+        price: '₹3,250',
+        marketPrice: '₹3,700',
+        description: 'Premium 48V lead-acid charger with enhanced features and advanced protection.',
+        features: ['Fast Charging', 'Advanced Protection', 'Premium Build']
+      },
+      {
+        id: 'model-3',
+        name: 'Premium Model 2',
+        image: '/e-rick 48v model3 copy.jpg',
+        specs: '48V/18A',
+        price: '₹3,250',
+        marketPrice: '₹3,700',
+        description: 'Premium 48V lead-acid charger with superior build quality and enhanced safety.',
+        features: ['Fast Charging', 'Superior Safety', 'Premium Design']
       }
     ]
   },
@@ -91,7 +101,7 @@ const products: Product[] = [
     price: '₹3,650',
     marketPrice: '₹4,500',
     description: 'Advanced lithium battery charger with smart charging technology',
-    image: '/e-ric 48v lithium.jpg',
+    image: '/ev 48 rick lithium copy.jpg',
     category: 'rickshaw',
     rating: 4.9,
     features: ['Smart Technology', 'Premium Quality', 'Advanced Safety'],
@@ -134,7 +144,7 @@ const products: Product[] = [
     price: '₹2,150',
     marketPrice: '₹2,750',
     description: 'Universal lithium charger for E-Scooters with dual voltage support',
-    image: 'https://images.pexels.com/photos/3825573/pexels-photo-3825573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    image: '/scooty 48v lithium.jpg',
     category: 'scooter',
     rating: 4.8,
     features: ['Dual Voltage', 'Smart Charging', 'Universal Compatibility'],

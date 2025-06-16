@@ -79,20 +79,38 @@ const products: Product[] = [
       },
       {
         id: 'model-2',
-        name: 'Premium Model',
-        image: '/E-rickshaw 48v.jpg',
-        specs: '48V/20A',
-        price: '₹3,450',
-        marketPrice: '₹3,900',
-        description: 'Premium 48V lead-acid charger with enhanced charging speed and advanced protection.',
-        features: ['Ultra Fast Charging', 'Advanced Protection', 'Premium Build'],
+        name: 'Premium Model 1',
+        image: '/e-rickshaw 48v model 2 copy.jpg',
+        specs: '48V/18A',
+        price: '₹3,250',
+        marketPrice: '₹3,700',
+        description: 'Premium 48V lead-acid charger with enhanced features and advanced protection.',
+        features: ['Fast Charging', 'Advanced Protection', 'Premium Build'],
         detailedFeatures: [
-          'Ultra-fast charging with 20A output',
+          'Enhanced charging algorithm for faster charging',
           'Advanced multi-layer protection system',
           'Digital display with real-time monitoring',
           'Premium aluminum housing for better heat dissipation',
           'Smart temperature compensation',
-          '2-year extended warranty'
+          '1-year comprehensive warranty'
+        ]
+      },
+      {
+        id: 'model-3',
+        name: 'Premium Model 2',
+        image: '/e-rick 48v model3 copy.jpg',
+        specs: '48V/18A',
+        price: '₹3,250',
+        marketPrice: '₹3,700',
+        description: 'Premium 48V lead-acid charger with superior build quality and enhanced safety.',
+        features: ['Fast Charging', 'Superior Safety', 'Premium Design'],
+        detailedFeatures: [
+          'Superior charging efficiency with smart technology',
+          'Enhanced safety features with multiple protection layers',
+          'Premium design with improved aesthetics',
+          'Advanced cooling system for optimal performance',
+          'Smart battery health monitoring',
+          '1-year comprehensive warranty'
         ]
       }
     ]
@@ -129,7 +147,7 @@ const products: Product[] = [
     price: '₹3,650',
     marketPrice: '₹4,500',
     description: 'Advanced lithium battery charger with smart charging technology and premium safety features.',
-    image: '/e-ric 48v lithium.jpg',
+    image: '/ev 48 rick lithium copy.jpg',
     rating: 4.9,
     features: ['Smart Technology', 'Premium Quality', 'Advanced Safety'],
     detailedFeatures: [
@@ -199,7 +217,7 @@ const products: Product[] = [
     price: '₹2,150',
     marketPrice: '₹2,750',
     description: 'Universal lithium charger for E-Scooters with dual voltage support and smart charging.',
-    image: 'https://images.pexels.com/photos/3825573/pexels-photo-3825573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    image: '/scooty 48v lithium.jpg',
     rating: 4.8,
     features: ['Dual Voltage', 'Smart Charging', 'Universal Compatibility'],
     detailedFeatures: [
