@@ -6,74 +6,74 @@ const clients = [
   { 
     name: 'Sagar Enterprises', 
     location: 'Akhnoor, J&K',
-    description: 'Leading distributor of EV charging solutions in Jammu & Kashmir region, serving over 200+ customers with reliable charging infrastructure.',
+    description: 'Leading distributor of electric vehicle charging solutions in the Jammu & Kashmir region, specializing in E-Rickshaw chargers and serving the growing electric mobility market.',
     specialization: 'E-Rickshaw Chargers',
-    yearsWithUs: '3+',
+    yearsWithUs: '3',
     rating: 4.9,
-    projects: 150
+    chargersSold: 850
   },
   { 
     name: 'Mohan Electronics', 
-    location: 'Haridwar',
-    description: 'Trusted electronics retailer specializing in smart home solutions and EV charging equipment for residential and commercial use.',
+    location: 'Haridwar, Uttarakhand',
+    description: 'Established electronics retailer with expertise in consumer electronics, smart home solutions, and electric vehicle charging equipment for both residential and commercial applications.',
     specialization: 'Smart TVs & Chargers',
-    yearsWithUs: '4+',
+    yearsWithUs: '2',
     rating: 4.8,
-    projects: 200
+    chargersSold: 650
   },
   { 
     name: 'Evergreen Automatic', 
     location: 'R.S. Pura, Jammu',
-    description: 'Automotive electronics specialist providing comprehensive EV charging solutions and maintenance services across the region.',
+    description: 'Automotive electronics specialist providing comprehensive electric vehicle solutions including chargers, maintenance services, and technical support across the Jammu region.',
     specialization: 'Automotive Electronics',
-    yearsWithUs: '2+',
+    yearsWithUs: '2',
     rating: 4.7,
-    projects: 120
+    chargersSold: 420
   },
   { 
     name: 'Jeet Motors', 
-    location: 'Bulandshahr',
-    description: 'Premier automotive service center offering complete EV solutions including chargers, batteries, and technical support.',
+    location: 'Bulandshahr, UP',
+    description: 'Premier automotive service center and dealer offering complete electric vehicle solutions including E-Rickshaw and E-Scooter chargers, batteries, and comprehensive technical support.',
     specialization: 'EV Solutions',
-    yearsWithUs: '3+',
+    yearsWithUs: '3',
     rating: 4.8,
-    projects: 180
+    chargersSold: 720
   },
   { 
     name: 'Sigma Electric Vehicle', 
     location: 'Indirapuram, Ghaziabad',
-    description: 'Innovative EV technology company focused on sustainable transportation solutions and advanced charging infrastructure.',
+    description: 'Innovative electric vehicle technology company focused on sustainable transportation solutions, advanced charging infrastructure, and promoting clean energy adoption.',
     specialization: 'EV Technology',
-    yearsWithUs: '5+',
+    yearsWithUs: '3',
     rating: 4.9,
-    projects: 300
+    chargersSold: 1200
   },
   { 
     name: 'Krishna Motors', 
-    location: 'Bijnor',
-    description: 'Full-service automotive dealer specializing in electric vehicles and providing comprehensive charging solutions to customers.',
+    location: 'Bijnor, UP',
+    description: 'Full-service automotive dealer specializing in electric vehicles, providing comprehensive charging solutions, vehicle sales, and after-sales service to customers.',
     specialization: 'EV Sales & Service',
-    yearsWithUs: '2+',
+    yearsWithUs: '2',
     rating: 4.6,
-    projects: 100
+    chargersSold: 380
   },
   { 
     name: 'Raj Enterprises', 
     location: 'Dumka, Jharkhand',
-    description: 'Regional electronics distributor serving rural and urban markets with quality EV charging equipment and smart electronics.',
+    description: 'Regional electronics distributor serving both rural and urban markets with quality electric vehicle charging equipment, smart electronics, and consumer appliances.',
     specialization: 'Regional Distribution',
-    yearsWithUs: '3+',
+    yearsWithUs: '3',
     rating: 4.7,
-    projects: 140
+    chargersSold: 560
   },
   { 
     name: 'Om Balajee Automobile India Pvt. Ltd.', 
-    location: 'Sahibabad',
-    description: 'Large-scale automotive manufacturer and distributor providing OEM-quality EV charging solutions for commercial applications.',
+    location: 'Sahibabad, UP',
+    description: 'Large-scale automotive manufacturer and distributor providing OEM-quality electric vehicle charging solutions for commercial applications and bulk orders.',
     specialization: 'OEM Solutions',
-    yearsWithUs: '4+',
+    yearsWithUs: '3',
     rating: 4.8,
-    projects: 250
+    chargersSold: 950
   },
 ];
 
@@ -107,9 +107,9 @@ const Clients: React.FC = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           {[
-            { number: '50+', label: 'Active Partners', icon: Users },
-            { number: '1500+', label: 'Projects Completed', icon: Award },
-            { number: '15+', label: 'States Covered', icon: MapPin },
+            { number: '8+', label: 'Active Partners', icon: Users },
+            { number: '5,730+', label: 'Chargers Sold', icon: Award },
+            { number: '6+', label: 'States Covered', icon: MapPin },
             { number: '4.8', label: 'Average Rating', icon: Star },
           ].map((stat, index) => (
             <div key={index} className="text-center bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
@@ -165,8 +165,8 @@ const Clients: React.FC = () => {
                   </span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500 dark:text-gray-400">Projects:</span>
-                  <span className="font-medium text-gray-800 dark:text-gray-200">{client.projects}+</span>
+                  <span className="text-gray-500 dark:text-gray-400">Chargers Sold:</span>
+                  <span className="font-medium text-gray-800 dark:text-gray-200">{client.chargersSold}+</span>
                 </div>
               </div>
             </div>

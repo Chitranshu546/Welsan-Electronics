@@ -319,17 +319,24 @@ const Products: React.FC = () => {
           </div>
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Product Grid - Matching homepage layout exactly */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {filteredProducts.map((product, index) => {
             const productData = getProductData(product);
             return (
               <div
                 key={product.id}
-                className="group relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer overflow-hidden"
+                className="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2 border-0 flex flex-col h-full"
                 onClick={() => handleProductClick(product.id)}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
+                {/* Category Badge */}
+                <div className="absolute top-4 left-4 z-10">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${product.gradient} shadow-lg`}>
+                    {product.category === 'rickshaw' ? 'E-Rickshaw' : product.category === 'scooter' ? 'E-Scooter' : 'LED TV'}
+                  </span>
+                </div>
+
                 {/* Rating Badge */}
                 <div className="absolute top-4 right-4 z-10">
                   <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center shadow-lg">
@@ -340,7 +347,7 @@ const Products: React.FC = () => {
 
                 {/* Model Switcher for 48V Lead-Acid */}
                 {product.hasModels && product.models && (
-                  <div className="absolute top-4 left-4 right-16 z-10">
+                  <div className="absolute top-16 left-4 right-4 z-10">
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-2 shadow-lg">
                       <div className="flex items-center justify-between">
                         <button
@@ -374,59 +381,67 @@ const Products: React.FC = () => {
                 )}
 
                 {/* Product Image */}
-                <div className="aspect-w-16 aspect-h-9 overflow-hidden bg-gray-50 dark:bg-gray-700 rounded-xl m-4" style={{ marginTop: product.hasModels ? '4rem' : '1rem' }}>
+                <div className="relative bg-gray-50 dark:bg-gray-700 rounded-xl m-4 overflow-hidden flex-shrink-0" style={{ marginTop: product.hasModels ? '5rem' : '1rem', height: '200px' }}>
                   <img
                     src={productData.image}
                     alt={productData.name}
-                    className="w-full h-48 object-contain transform group-hover:scale-105 transition-transform duration-500 p-4"
+                    className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 p-4"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${product.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                {/* Product Content */}
+                <div className="p-6 pt-2 flex flex-col flex-grow">
+                  {/* Title and Type Badge - Fixed height */}
+                  <div className="mb-4" style={{ minHeight: '80px' }}>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 transition-colors duration-300">
                       {productData.name}
                     </h3>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      product.type === 'Lithium' 
-                        ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
-                        : product.type === '4K Ultra HD'
-                        ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                        : product.type === 'HD Ready'
-                        ? 'bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300'
-                        : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                    }`}>
-                      {product.type}
-                    </span>
+                    
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-600 dark:text-gray-400">{productData.specs}</span>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        product.type === 'Lithium' 
+                          ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
+                          : product.type === '4K Ultra HD'
+                          ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                          : product.type === 'HD Ready'
+                          ? 'bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300'
+                          : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                      }`}>
+                        {product.type}
+                      </span>
+                    </div>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{productData.description}</p>
-
-                  {/* Features */}
-                  <div className="space-y-1 mb-4">
+                  {/* Features - Fixed height */}
+                  <div className="space-y-2 mb-4 flex-grow" style={{ minHeight: '90px' }}>
                     {productData.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                        {idx === 0 && <Zap className="text-blue-500 mr-2\" size={14} />}
+                        {idx === 0 && <Zap className="text-blue-500 mr-2" size={14} />}
                         {idx === 1 && <Shield className="text-green-500 mr-2" size={14} />}
-                        {idx === 2 && <Star className="text-purple-500 mr-2\" size={14} />}
+                        {idx === 2 && <Star className="text-purple-500 mr-2" size={14} />}
                         <span>{feature}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <p className="text-2xl font-bold text-primary-600">{productData.price}</p>
-                      {productData.marketPrice && (
-                        <p className="text-sm text-gray-500 dark:text-gray-400 line-through">{productData.marketPrice}</p>
-                      )}
+                  {/* Price - Fixed height */}
+                  <div className="mb-4" style={{ minHeight: '60px' }}>
+                    <div className="text-xl font-bold text-gray-900 dark:text-white">
+                      {productData.price}
                     </div>
+                    {productData.marketPrice && (
+                      <div className="text-sm text-gray-500 dark:text-gray-400 line-through">
+                        {productData.marketPrice}
+                      </div>
+                    )}
                   </div>
 
+                  {/* Action Button */}
                   <button
                     onClick={(e) => handleEnquireClick(e, product.id)}
-                    className={`w-full py-3 px-4 rounded-xl font-semibold text-white bg-gradient-to-r ${product.gradient} hover:opacity-90 transition-all duration-300 transform group-hover:scale-105 flex items-center justify-center shadow-lg`}
+                    className={`w-full py-3 px-4 rounded-xl font-semibold text-white bg-gradient-to-r ${product.gradient} hover:opacity-90 transition-all duration-300 transform group-hover:scale-105 shadow-lg flex items-center justify-center mt-auto`}
                   >
                     Enquire Now
                     <ArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" size={16} />
