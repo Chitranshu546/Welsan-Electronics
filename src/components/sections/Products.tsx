@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { BatteryCharging, Tv, ChevronRight, Zap, Shield, Star, ArrowRight, ChevronLeft } from 'lucide-react';
 
 const productData = [
-  // EV Chargers
+  // EV Chargers - Only E-Rickshaw chargers for homepage
   {
     id: 'rickshaw-48v-lead',
     name: '48V Lead-Acid Charger',
@@ -78,34 +78,6 @@ const productData = [
     image: '/ev 48 rick lithium copy.jpg',
     gradient: 'from-purple-500 to-pink-500',
     badgeGradient: 'from-purple-600 to-pink-600'
-  },
-  {
-    id: 'scooter-48v-lead',
-    name: '48V E-Scooter Charger',
-    category: 'E-Scooter',
-    type: 'Lead-Acid',
-    specs: '48V/4A',
-    price: '₹730',
-    marketPrice: '₹890',
-    rating: 4.6,
-    features: ['Compact Design', 'Reliable Performance', 'Cost Effective'],
-    image: 'https://images.pexels.com/photos/3825567/pexels-photo-3825567.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2',
-    gradient: 'from-orange-500 to-red-500',
-    badgeGradient: 'from-orange-600 to-red-600'
-  },
-  {
-    id: 'scooter-lithium',
-    name: '48V/60V Lithium Charger',
-    category: 'E-Scooter',
-    type: 'Lithium',
-    specs: '48V-60V/6A',
-    price: '₹2,150',
-    marketPrice: '₹2,750',
-    rating: 4.8,
-    features: ['Dual Voltage', 'Smart Charging', 'Universal Compatibility'],
-    image: '/scooty 48v lithium.jpg',
-    gradient: 'from-indigo-500 to-purple-500',
-    badgeGradient: 'from-indigo-600 to-purple-600'
   },
   // LED TVs
   {
@@ -207,7 +179,7 @@ const Products: React.FC = () => {
 
   const filteredProducts = productData.filter(product => 
     activeTab === 'chargers' 
-      ? product.category.includes('E-') 
+      ? product.category === 'E-Rickshaw' // Only E-Rickshaw chargers, no E-Scooter
       : product.category === 'LED TV'
   );
 
@@ -293,8 +265,8 @@ const Products: React.FC = () => {
             </div>
           </div>
 
-          {/* Product Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr">
+          {/* Product Grid - Uniform card layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {filteredProducts.map((product, index) => {
               const productData = getProductData(product);
               return (
@@ -304,22 +276,22 @@ const Products: React.FC = () => {
                   onClick={() => handleProductClick(product.id)}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  {/* Category Badge */}
+                  {/* Rating Badge - Fixed position */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center shadow-lg">
+                      <Star className="text-yellow-400 fill-current" size={14} />
+                      <span className="text-xs font-semibold text-gray-800 dark:text-gray-200 ml-1">{product.rating}</span>
+                    </div>
+                  </div>
+
+                  {/* Category Badge - Fixed position */}
                   <div className="absolute top-4 left-4 z-10">
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${product.badgeGradient} shadow-lg`}>
                       {product.category}
                     </span>
                   </div>
 
-                  {/* Rating Badge */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center shadow-lg">
-                      <Star className="text-yellow-400 fill-current" size={14} />
-                      <span className="text-xs font-semibold text-gray-800 dark:text-gray-200 ml-1">{product.rating}</span>
-                    </div>
-                  </div>
-
-                  {/* Model Switcher for 48V Lead-Acid */}
+                  {/* Model Switcher for 48V Lead-Acid - Fixed position */}
                   {product.hasModels && product.models && (
                     <div className="absolute top-16 left-4 right-4 z-10">
                       <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-2 shadow-lg">
@@ -354,39 +326,42 @@ const Products: React.FC = () => {
                     </div>
                   )}
 
-                  {/* Product Image */}
-                  <div className="relative bg-gray-50 dark:bg-gray-700 rounded-xl m-4 p-4 overflow-hidden flex-shrink-0" style={{ marginTop: product.hasModels ? '5rem' : '1rem' }}>
+                  {/* Product Image - Fixed height */}
+                  <div className="relative bg-gray-50 dark:bg-gray-700 rounded-xl m-4 overflow-hidden flex-shrink-0" style={{ marginTop: product.hasModels ? '5rem' : '1rem', height: '200px' }}>
                     <img
                       src={productData.image}
                       alt={productData.name}
-                      className="w-full h-48 object-contain transform group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 p-4"
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t ${product.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                   </div>
 
-                  {/* Product Content */}
+                  {/* Product Content - Consistent layout */}
                   <div className="p-6 pt-2 flex flex-col flex-grow">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 transition-colors duration-300">
-                      {productData.name}
-                    </h3>
-                    
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">{productData.specs}</span>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        product.type === 'Lithium' 
-                          ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
-                          : product.type === '4K Ultra HD'
-                          ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                          : product.type === 'HD Ready'
-                          ? 'bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300'
-                          : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                      }`}>
-                        {product.type}
-                      </span>
+                    {/* Title and Type Badge - Fixed height */}
+                    <div className="mb-4" style={{ minHeight: '80px' }}>
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
+                        {productData.name}
+                      </h3>
+                      
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-600 dark:text-gray-400">{productData.specs}</span>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          product.type === 'Lithium' 
+                            ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
+                            : product.type === '4K Ultra HD'
+                            ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                            : product.type === 'HD Ready'
+                            ? 'bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300'
+                            : 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                        }`}>
+                          {product.type}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Features */}
-                    <div className="space-y-1 mb-4 flex-grow">
+                    {/* Features - Fixed height */}
+                    <div className="space-y-2 mb-4 flex-grow" style={{ minHeight: '90px' }}>
                       {productData.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                           {idx === 0 && <Zap className="text-blue-500 mr-2\" size={14} />}
@@ -397,8 +372,8 @@ const Products: React.FC = () => {
                       ))}
                     </div>
 
-                    {/* Price */}
-                    <div className="mb-4">
+                    {/* Price - Fixed height */}
+                    <div className="mb-4" style={{ minHeight: '60px' }}>
                       <div className="text-xl font-bold text-gray-900 dark:text-white">
                         {productData.price}
                       </div>
@@ -409,7 +384,7 @@ const Products: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Action Button */}
+                    {/* Action Button - Fixed at bottom */}
                     <button
                       onClick={(e) => handleEnquireClick(e, product.id)}
                       className={`w-full py-3 px-4 rounded-xl font-semibold text-white bg-gradient-to-r ${product.gradient} hover:opacity-90 transition-all duration-300 transform group-hover:scale-105 flex items-center justify-center shadow-lg mt-auto`}

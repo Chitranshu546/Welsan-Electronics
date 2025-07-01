@@ -77,9 +77,9 @@ const About: React.FC = () => {
         </div>
 
         {/* About Content with Promotional Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Features Grid */}
-          <div ref={featuresRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 opacity-0 transition-all duration-700 delay-300">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+          {/* Features Grid - Takes 2/3 of the space */}
+          <div ref={featuresRef} className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 opacity-0 transition-all duration-700 delay-300">
             <FeatureCard
               icon={<Zap size={40} />}
               title="Quality Products"
@@ -102,9 +102,9 @@ const About: React.FC = () => {
             />
           </div>
 
-          {/* Promotional Image */}
-          <div ref={imageRef} className="opacity-0 transition-all duration-700 delay-500">
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+          {/* Promotional Image - Takes 1/3 of the space */}
+          <div ref={imageRef} className="lg:col-span-1 opacity-0 transition-all duration-700 delay-500">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 h-full">
               <img
                 src="/home page poster copy.jpg"
                 alt="Welsan Electronics - Good Quality Best Price"

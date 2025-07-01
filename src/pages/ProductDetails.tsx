@@ -429,8 +429,15 @@ const ProductDetails: React.FC = () => {
               <div className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden">
                 <img
                   src={displayData.image}
-                  alt={displayData.name}
+                  alt={displayData.name || product.name}
                   className="w-full h-full object-contain"
+                  onError={(e) => {
+                    console.error('Image failed to load:', displayData.image);
+                    // Fallback to product image if model image fails
+                    if (displayData.image !== product.image) {
+                      (e.target as HTMLImageElement).src = product.image;
+                    }
+                  }}
                 />
               </div>
             </div>
